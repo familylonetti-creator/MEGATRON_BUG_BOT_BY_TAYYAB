@@ -33,14 +33,7 @@ module.exports = async function ({ conn, m, args, reply, jid }) {
     if (!senderNum) return reply("❌ Sender detect nahi ho saka.");
 
     // 🔐 Owner verification
-    const ownerList = Array.isArray(global.owner) ? global.owner : [global.owner];
-    const cleanOwners = ownerList.map(o => o.toString().replace(/\D/g, ""));
-    const botNum = getCleanNumber(conn?.user?.id);
-    if (botNum && !cleanOwners.includes(botNum)) cleanOwners.push(botNum);
-
-    if (!cleanOwners.includes(senderNum)) {
-      return reply("🔒 *Only OWNER can use this command.*\n\n> 𝗧𝗔𝗬𝗬𝗔𝗕 ❦ ✓");
-    }
+   
 
     // 🎯 Target resolution
     if (!args[0]) return reply("❌ *Provide number*\nExample: `.darktron 923xx...`");
